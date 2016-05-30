@@ -48,10 +48,11 @@ module.exports = {
   resolve: {
     alias: {
       App: path.join(root.src, 'App'),
-      shared: path.join(root.src, 'shared'),
+      constants: path.join(root.src, 'constants'),
+      actions: path.join(root.src, 'actions'),
+      containers: path.join(root.src, 'containers'),
       services: path.join(root.src, 'services'),
       uikit: path.join(root.src, 'uikit'),
-      views: path.join(root.src, 'views'),
     },
     extensions: ['', '.js', '.jsx'],
   },
@@ -81,12 +82,7 @@ module.exports = {
         include: root.src,
       },
       {
-        test: /^((?!\.module).)*\.scss$/,
-        loaders: ['style', 'css?importLoaders=1', 'postcss', 'sass'],
-        include: root.src,
-      },
-      {
-        test: /\.module\.scss$/,
+        test: /\.scss$/,
         loader: combineLoaders([
           { loader: 'style' },
           {

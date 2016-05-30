@@ -1,7 +1,7 @@
 {
-  "name": "webpack-boilerplate",
-  "version": "0.2.0",
-  "description": "Essential Webpack Boilerplate for React",
+  "name": "react-currency",
+  "version": "0.1.0",
+  "description": "React Currency Exchange",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -56,9 +56,14 @@
     "axios": "^0.11.0",
     "babel-polyfill": "^6.8.0",
     "classnames": "^2.2.5",
+    "material-ui": "^0.15.0",
+    "normalize.css": "^4.1.1",
     "react": "^15.1.0",
     "react-dom": "^15.0.1",
+    "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
+    "react-tap-event-plugin": "^1.0.0",
+    "redux": "^3.5.2",
     "redux-saga": "^0.10.4"
   }
 }

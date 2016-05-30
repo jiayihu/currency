@@ -1,7 +1,32 @@
 @import '../variables';
-@import 'styles/bootstrap';
 
+html,
 body {
-  background-color: beige;
-  font-size: $font-size;
+  background: linear-gradient(to left, #FF5F6D , #FFC371);
+  color: $primary-dark;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 420px;
+
+  @media (min-width: $screen-phone) {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.content {
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .22);
+  height: 100vh;
+  width: 100%;
+
+  @media (min-width: $screen-phone) {
+    height: 90vh;
+  }
 }

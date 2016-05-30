@@ -1,0 +1,13 @@
+@import '../../variables';
+
+.rate {
+  border-bottom: 1px solid $primary-light;
+  list-style-type: none;
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.currency {
+  opacity: .5;
+  margin-left: 1.5rem;
+}
