@@ -1,0 +1,14 @@
+scss_files: "./src/**/*.scss"
+
+linters:
+  ColorKeyword:
+    enabled: false
+
+  ColorVariable:
+    enabled: false
+
+  HexNotation:
+    enabled: false
+
+  SelectorFormat:
+    convention: 'hyphenated_lowercase'
