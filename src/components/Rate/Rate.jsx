@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styles from './styles.scss';
 
-export default function Rate() {
+export default function Rate(props) {
   return (
     <li className={styles.rate}>
       <span>
         <span className={styles.symbol}>$</span>
         {' '}
-        <span className={styles.value}>1.00</span>
+        <span className={styles.value}>{props.value}</span>
       </span>
-      <span className={styles.currency}>USD</span>
+      <span className={styles.currency}>{props.currency}</span>
     </li>
   );
 }
+
+Rate.propTypes = {
+  value: PropTypes.number.isRequired,
+  currency: PropTypes.string.isRequired,
+};
