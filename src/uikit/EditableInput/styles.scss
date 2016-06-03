@@ -1,0 +1,21 @@
+@import '../uikit-variables';
+
+.editableInput {
+  cursor: pointer;
+}
+
+.input {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+
+  &:focus {
+    border-color: $primary-light;
+    outline: none;
+  }
+}

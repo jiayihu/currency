@@ -7,11 +7,12 @@ import styles from './styles.scss';
 
 function App(props) {
   const isRatesAvailable = Object.keys(props.ratesByBase).length > 0;
+  const { bases, basesOrder } = props.user;
   let currencies;
 
   if (isRatesAvailable) {
-    currencies = props.bases.map(base => (
-      <Currency base={base} rates={props.ratesByBase[base.id]} key={base.id} />
+    currencies = basesOrder.map(baseId => (
+      <Currency base={bases[baseId]} rates={props.ratesByBase[bases[baseId].name]} key={bases[baseId].name} />
     ));
   }
 
@@ -25,13 +26,16 @@ function App(props) {
 }
 
 App.propTypes = {
-  bases: PropTypes.array.isRequired,
+  user: PropTypes.shape({
+    bases: PropTypes.object,
+    basesOrder: PropTypes.array,
+  }).isRequired,
   ratesByBase: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    bases: state.user.bases,
+    user: state.user,
     ratesByBase: state.rates,
   };
 }

@@ -1,5 +1,5 @@
-import Button from './Button/Button';
+import EditableInput from './EditableInput/EditableInput';
 
-export default {
-  Button,
+export {
+  EditableInput,
 };

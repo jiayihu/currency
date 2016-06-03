@@ -4,7 +4,6 @@ import * as actionTypes from '../constants/actionTypes';
 
 function* getLatestRates() {
   const { response, error } = yield call(api.getLatestRates);
-  console.log(response);
   if(response) {
     yield put({
       type: actionTypes.GET_LATEST_RATES_SUCCEDED,
