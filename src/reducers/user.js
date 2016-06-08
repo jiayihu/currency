@@ -30,7 +30,12 @@ function basesOrder(state = [0]) {
   return state;
 }
 
+function currencies(state = ['AUD', 'USD']) {
+  return state;
+}
+
 export default combineReducers({
   bases,
   basesOrder,
+  currencies,
 });

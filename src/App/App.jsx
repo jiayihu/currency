@@ -1,25 +1,28 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Currency } from '../components/';
+import { ratesSelector } from '../reducers/rates';
 
 import './normalize.css';
 import styles from './styles.scss';
 
 function App(props) {
   const isRatesAvailable = Object.keys(props.ratesByBase).length > 0;
-  const { bases, basesOrder } = props.user;
-  let currencies;
+  const { bases, basesOrder, currencies } = props.user;
+  let currenciesList;
 
   if (isRatesAvailable) {
-    currencies = basesOrder.map(baseId => (
-      <Currency base={bases[baseId]} rates={props.ratesByBase[bases[baseId].name]} key={bases[baseId].name} />
-    ));
+    currenciesList = basesOrder.map(baseId => {
+      const baseName = bases[baseId].name;
+      const rates = ratesSelector(props.ratesByBase[baseName], currencies);
+      return (<Currency base={bases[baseId]} rates={rates} key={baseName} />);
+    });
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {isRatesAvailable ? currencies : 'Loading...'}
+        {isRatesAvailable ? currenciesList : 'Loading...'}
       </div>
     </div>
   );
@@ -29,6 +32,7 @@ App.propTypes = {
   user: PropTypes.shape({
     bases: PropTypes.object,
     basesOrder: PropTypes.array,
+    currencies: PropTypes.array,
   }).isRequired,
   ratesByBase: PropTypes.object.isRequired,
 };

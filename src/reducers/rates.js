@@ -11,3 +11,14 @@ export default function rates(state = {}, action) {
       return state;
   }
 }
+
+export function ratesSelector(state, currencies) {
+  if ((typeof state !== 'object') || !Array.isArray(currencies)) {
+    throw new Error('State must be an Object and currencies an Array');
+  }
+
+  const userRates = {};
+  currencies.forEach((currency) => (userRates[currency] = state[currency]));
+
+  return userRates;
+}
