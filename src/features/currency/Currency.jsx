@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import { Base } from '../../containers/';
-import { Rates } from '../';
+import { Base } from './containers/';
+import { Rates } from './components/';
 import styles from './styles.scss';
 
 export default function Currency({ base, rates }) {

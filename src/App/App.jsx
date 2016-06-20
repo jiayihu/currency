@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Currency } from '../components/';
+import Currency from '../features/currency/Currency';
 import { ratesSelector } from '../reducers/rates';
 
 import './normalize.css';

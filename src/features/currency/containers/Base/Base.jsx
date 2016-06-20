@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { EditableInput } from '../../uikit/';
+import { EditableInput } from 'uikit';
 import { connect } from 'react-redux';
-import { updateBaseValue } from '../../actions/';
+import { updateBaseValue } from 'actions';
 
 import styles from './styles.scss';
 

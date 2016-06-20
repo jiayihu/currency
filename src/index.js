@@ -5,6 +5,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import App from './App/App';
 import rootReducer from './reducers/';
 import rootSaga from './sagas/';
@@ -20,7 +23,9 @@ store.dispatch({ type: actionTypes.GET_LATEST_RATES_REQUESTED });
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+      <App />
+    </MuiThemeProvider>
   </Provider>, document.getElementById('app'));
 
 if (module.hot) {

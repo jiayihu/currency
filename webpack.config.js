@@ -50,7 +50,7 @@ module.exports = {
       App: path.join(root.src, 'App'),
       constants: path.join(root.src, 'constants'),
       actions: path.join(root.src, 'actions'),
-      containers: path.join(root.src, 'containers'),
+      reducers: path.join(root.src, 'reducers'),
       services: path.join(root.src, 'services'),
       uikit: path.join(root.src, 'uikit'),
     },
