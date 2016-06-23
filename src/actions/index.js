@@ -1,11 +1,7 @@
-import * as actionTypes from '../constants/actionTypes';
+import * as ratesActions from './rates';
+import * as baseActions from './base';
 
-export function updateBaseValue({ baseId, newValue }) {
-  return {
-    payload: {
-      baseId,
-      newValue,
-    },
-    type: actionTypes.UPDATE_BASE_VALUE,
-  };
-}
+export {
+  baseActions,
+  ratesActions,
+};

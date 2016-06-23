@@ -11,7 +11,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import App from './App/App';
 import rootReducer from './reducers/';
 import rootSaga from './sagas/';
-import * as actionTypes from './constants/actionTypes';
+import { ratesActions } from './actions/';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, compose(
@@ -19,7 +19,7 @@ const store = createStore(rootReducer, compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 sagaMiddleware.run(rootSaga);
-store.dispatch({ type: actionTypes.GET_LATEST_RATES_REQUESTED });
+store.dispatch(ratesActions.latestRatesRequested());
 
 ReactDOM.render(
   <Provider store={store}>
