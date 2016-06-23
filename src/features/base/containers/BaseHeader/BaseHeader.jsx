@@ -5,7 +5,7 @@ import { updateBaseValue } from 'actions';
 
 import styles from './styles.scss';
 
-class Base extends React.Component {
+class BaseHeader extends React.Component {
   constructor() {
     super();
     this.handleChangeValue = this.handleChangeValue.bind(this);
@@ -38,11 +38,11 @@ class Base extends React.Component {
   }
 }
 
-Base.propTypes = {
+BaseHeader.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   updateBaseValue: PropTypes.func.isRequired,
   value: PropTypes.number.isRequired,
 };
 
-export default connect(null, { updateBaseValue })(Base);
+export default connect(null, { updateBaseValue })(BaseHeader);

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Currency from '../features/currency/Currency';
+import Base from '../features/base/Base';
 import { ratesSelector } from '../reducers/rates';
 
 import './normalize.css';
@@ -15,7 +15,7 @@ function App(props) {
     currenciesList = basesOrder.map(baseId => {
       const baseName = bases[baseId].name;
       const rates = ratesSelector(props.ratesByBase[baseName], currencies);
-      return (<Currency base={bases[baseId]} rates={rates} key={baseName} />);
+      return (<Base base={bases[baseId]} rates={rates} key={baseName} />);
     });
   }
 
