@@ -16,7 +16,6 @@ const DEBUG = process.env.NODE_ENV !== 'production';
 
 const devPlugins = [
   new webpack.NoErrorsPlugin(),
-  new webpack.HotModuleReplacementPlugin(),
 ];
 const prodPlugins = [
   new webpack.optimize.OccurrenceOrderPlugin(),
@@ -32,13 +31,19 @@ const prodPlugins = [
   }),
 ];
 
+const devEntry = [
+  'react-hot-loader/patch',
+  root.src,
+];
+
 module.exports = {
+  devServer: DEBUG ? {
+    historyApiFallback: true,
+    noInfo: false,
+    port: 3000,
+  } : {},
   devtool: DEBUG ? 'eval' : 'source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    root.src,
-  ],
+  entry: DEBUG ? devEntry : root.src,
   output: {
     path: root.dest,
     pathinfo: true,
@@ -61,7 +66,6 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: combineLoaders([
-          { loader: 'react-hot' },
           {
             loader: 'babel',
             query: {

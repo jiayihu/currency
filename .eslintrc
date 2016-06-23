@@ -11,7 +11,8 @@
     "no-console": 0,
     "prefer-arrow-callback": [2, {
       "allowNamedFunctions": true
-    }]
+    }],
+    "react/prefer-stateless-function": 0
   },
 
   "env": {

@@ -1,33 +1,30 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import createSagaMiddleware from 'redux-saga';
+import { AppContainer as HotEnabler } from 'react-hot-loader';
+import Root from './App/Root';
+import configureStore from './store';
 
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import App from './App/App';
-import rootReducer from './reducers/';
-import rootSaga from './sagas/';
-import { ratesActions } from './actions/';
-
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, compose(
-  applyMiddleware(sagaMiddleware),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-));
-sagaMiddleware.run(rootSaga);
-store.dispatch(ratesActions.latestRatesRequested());
+const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-      <App />
-    </MuiThemeProvider>
-  </Provider>, document.getElementById('app'));
+  <HotEnabler>
+    <Root store={store} />
+  </HotEnabler>,
+  document.getElementById('app')
+);
 
-if (module.hot) {
-  module.hot.accept();
+/**
+ * React Hot Reloading
+ */
+if (module && module.hot) {
+  module.hot.accept('./App/Root.jsx', () => {
+    const NextRoot = require('./App/Root').default; // eslint-disable-line
+    ReactDOM.render(
+      <HotEnabler>
+        <NextRoot store={store} />
+      </HotEnabler>,
+      document.getElementById('app')
+    );
+  });
 }
