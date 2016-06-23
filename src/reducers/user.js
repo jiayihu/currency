@@ -3,17 +3,16 @@ import * as actionTypes from '../constants/actionTypes';
 
 const defaultState = {
   bases: {
-    0: {
-      id: 0,
-      name: 'EUR',
+    EUR: {
+      id: 'EUR',
       value: 1,
     },
   },
-  basesOrder: [0],
-  currencies: ['AUD', 'USD'],
+  basesOrder: ['EUR'],
+  rates: ['AUD', 'USD'],
 };
 
-function bases(state = defaultState.bases, action) {
+function basesByIdReducer(state = defaultState.bases, action) {
   switch (action.type) {
     case actionTypes.UPDATE_BASE_VALUE: {
       const { baseId, newValue } = action.payload;
@@ -30,16 +29,34 @@ function bases(state = defaultState.bases, action) {
   }
 }
 
-function basesOrder(state = defaultState.basesOrder) {
+function basesOrderReducer(state = defaultState.basesOrder) {
   return state;
 }
 
-function currencies(state = defaultState.currencies) {
-  return state;
+function ratesReducer(state = defaultState.rates, action) {
+  switch (action.type) {
+    case actionTypes.ADD_RATE:
+      return state.concat(action.payload.rate);
+    default:
+      return state;
+  }
 }
 
 export default combineReducers({
-  bases,
-  basesOrder,
-  currencies,
+  basesById: basesByIdReducer,
+  basesOrder: basesOrderReducer,
+  rates: ratesReducer,
 });
+
+
+/**
+ * Selectors
+ */
+
+export function bases(state) {
+  return state.basesOrder.map(baseId => state.basesById[baseId]);
+}
+
+export function rates(state) {
+  return state.rates;
+}

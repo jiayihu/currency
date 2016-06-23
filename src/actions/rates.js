@@ -6,18 +6,25 @@ export function latestRatesRequested() {
 
 export function latestRatesSucceeded({ base, rates }) {
   return {
-    type: actionTypes.GET_LATEST_RATES_SUCCEDED,
     payload: {
       base,
       rates,
     },
+    type: actionTypes.GET_LATEST_RATES_SUCCEDED,
   };
 }
 
 export function latestRatesFailed(error) {
   return {
     error: true,
-    type: actionTypes.GET_LATEST_RATES_FAILED,
     payload: error,
+    type: actionTypes.GET_LATEST_RATES_FAILED,
+  };
+}
+
+export function addUserRate(rate) {
+  return {
+    payload: { rate },
+    type: actionTypes.ADD_RATE,
   };
 }

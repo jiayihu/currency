@@ -1,18 +1,20 @@
 import React, { PropTypes } from 'react';
-import { BaseHeader } from './containers/';
+import { AddRate, BaseHeader } from './containers/';
 import { Rates } from './components/';
 import styles from './styles.scss';
 
-export default function Currency({ base, rates }) {
+export default function Base({ baseId, rates, baseValue }) {
   return (
-    <div className={styles.currency}>
-      <BaseHeader id={base.id} name={base.name} value={base.value} />
-      <Rates baseValue={base.value} rates={rates} />
+    <div className={styles.base}>
+      <BaseHeader id={baseId} name={baseId} value={baseValue} />
+      <Rates baseValue={baseValue} rates={rates} />
+      <AddRate />
     </div>
   );
 }
 
-Currency.propTypes = {
-  base: PropTypes.object.isRequired,
+Base.propTypes = {
+  baseId: PropTypes.string.isRequired,
   rates: PropTypes.object.isRequired,
+  baseValue: PropTypes.number.isRequired,
 };

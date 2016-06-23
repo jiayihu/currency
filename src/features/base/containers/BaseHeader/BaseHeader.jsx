@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { EditableInput } from 'uikit';
 import { connect } from 'react-redux';
-import { baseActions } from '../../../../actions/';
+import { baseActions } from 'actions/';
 
 import styles from './styles.scss';
 
@@ -20,7 +20,7 @@ class BaseHeader extends React.Component {
 
   render() {
     return (
-      <div className={styles.base}>
+      <div className={styles.baseHeader}>
         <span>
           <span className={styles.symbol}>€</span>
           {' '}
@@ -32,15 +32,14 @@ class BaseHeader extends React.Component {
             />
           </span>
         </span>
-        <span className={styles.currency}>{this.props.name}</span>
+        <span className={styles.currency}>{this.props.id}</span>
       </div>
     );
   }
 }
 
 BaseHeader.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   updateBaseValue: PropTypes.func.isRequired,
   value: PropTypes.number.isRequired,
 };

@@ -4,3 +4,5 @@ export const GET_LATEST_RATES_FAILED = 'GET_LATEST_RATES_FAILED';
 
 export const ADD_BASE = 'ADD_BASE';
 export const UPDATE_BASE_VALUE = 'UPDATE_BASE_VALUE';
+
+export const ADD_RATE = 'ADD_RATE';

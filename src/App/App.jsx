@@ -1,46 +1,32 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Base from '../features/base/Base';
-import { ratesSelector } from '../reducers/rates';
+import { basesSelector } from '../reducers/';
 
 import './normalize.css';
 import styles from './styles.scss';
 
 function App(props) {
-  const isRatesAvailable = Object.keys(props.ratesByBase).length > 0;
-  const { bases, basesOrder, currencies } = props.user;
-  let currenciesList;
-
-  if (isRatesAvailable) {
-    currenciesList = basesOrder.map(baseId => {
-      const baseName = bases[baseId].name;
-      const rates = ratesSelector(props.ratesByBase[baseName], currencies);
-      return (<Base base={bases[baseId]} rates={rates} key={baseName} />);
-    });
-  }
+  const basesList = props.bases.map(base => (
+    <Base baseId={base.id} rates={base.rates} baseValue={base.value} key={base.id} />
+  ));
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {isRatesAvailable ? currenciesList : 'Loading...'}
+        {basesList}
       </div>
     </div>
   );
 }
 
 App.propTypes = {
-  user: PropTypes.shape({
-    bases: PropTypes.object,
-    basesOrder: PropTypes.array,
-    currencies: PropTypes.array,
-  }).isRequired,
-  ratesByBase: PropTypes.object.isRequired,
+  bases: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    user: state.user,
-    ratesByBase: state.rates,
+    bases: basesSelector(state),
   };
 }
 

@@ -57,6 +57,7 @@
     "axios": "^0.11.0",
     "babel-polyfill": "^6.8.0",
     "classnames": "^2.2.5",
+    "lodash": "^4.13.1",
     "material-ui": "^0.15.0",
     "normalize.css": "^4.1.1",
     "react": "^15.1.0",
