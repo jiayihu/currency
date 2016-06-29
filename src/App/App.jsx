@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Base from '../features/base/Base';
 import { basesSelector } from '../reducers/';
 
+import 'react-select/dist/react-select.css';
 import './normalize.css';
 import styles from './styles.scss';
 

@@ -36,7 +36,7 @@ function basesOrderReducer(state = defaultState.basesOrder) {
 function ratesReducer(state = defaultState.rates, action) {
   switch (action.type) {
     case actionTypes.ADD_RATE:
-      return state.concat(action.payload.rate);
+      return state.concat(action.payload.rates);
     default:
       return state;
   }

@@ -1,6 +1,10 @@
 import * as actionTypes from '../constants/actionTypes';
 
-export default function ratesReducer(state = {}, action) {
+const defaultState = {
+  EUR: {},
+};
+
+export default function ratesReducer(state = defaultState, action) {
   switch (action.type) {
     case actionTypes.GET_LATEST_RATES_SUCCEDED:
       return {
@@ -10,6 +14,11 @@ export default function ratesReducer(state = {}, action) {
     default:
       return state;
   }
+}
+
+export function allRatesIds(state) {
+  const ratesObj = state[Object.keys(state)[0]];
+  return Object.keys(ratesObj);
 }
 
 export function ratesByBase(state, baseId) {

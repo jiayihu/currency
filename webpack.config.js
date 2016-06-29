@@ -83,7 +83,7 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: ['style', 'css'],
-        include: root.src,
+        include: [root.src, /node_modules/],
       },
       {
         test: /\.scss$/,

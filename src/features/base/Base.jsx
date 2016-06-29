@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { AddRate, BaseHeader } from './containers/';
+import { AddRate, AddRateBtn, BaseHeader } from './containers/';
 import { Rates } from './components/';
 import styles from './styles.scss';
 
@@ -8,6 +8,7 @@ export default function Base({ baseId, rates, baseValue }) {
     <div className={styles.base}>
       <BaseHeader id={baseId} name={baseId} value={baseValue} />
       <Rates baseValue={baseValue} rates={rates} />
+      <AddRateBtn />
       <AddRate />
     </div>
   );
