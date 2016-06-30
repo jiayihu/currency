@@ -1,7 +1,7 @@
 import * as ratesActions from './rates';
-import * as baseActions from './base';
+import * as userActions from './user/';
 
 export {
-  baseActions,
+  userActions,
   ratesActions,
 };

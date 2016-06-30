@@ -1,11 +1,13 @@
 @import '../../../../variables';
 
 .rate {
+  align-items: center;
   border-bottom: 1px solid $primary-light;
   display: flex;
   list-style-type: none;
   margin: 0 1rem;
-  padding: 1rem;
+  padding: .5rem;
+  padding-right: 0;
 }
 
 .amount {
@@ -14,4 +16,8 @@
 
 .currency {
   opacity: .5;
+}
+
+.icons {
+  margin-left: auto;
 }

@@ -37,6 +37,8 @@ function ratesReducer(state = defaultState.rates, action) {
   switch (action.type) {
     case actionTypes.ADD_RATE:
       return state.concat(action.payload.rates);
+    case actionTypes.DELETE_RATE:
+      return state.filter(rateId => rateId !== action.payload.rateId);
     default:
       return state;
   }

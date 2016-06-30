@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { EditableInput } from 'uikit';
 import { connect } from 'react-redux';
-import { baseActions } from 'actions/';
+import { userActions } from 'actions/';
 
 import styles from './styles.scss';
 
@@ -44,4 +44,4 @@ BaseHeader.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-export default connect(null, { updateBaseValue: baseActions.updateBaseValue })(BaseHeader);
+export default connect(null, { updateBaseValue: userActions.updateBaseValue })(BaseHeader);
