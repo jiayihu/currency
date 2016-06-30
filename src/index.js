@@ -4,8 +4,22 @@ import ReactDOM from 'react-dom';
 import { AppContainer as HotEnabler } from 'react-hot-loader';
 import Root from './App/Root';
 import configureStore from './store';
+import * as storage from './utils/storage';
+import debounce from 'lodash/debounce';
 
-const store = configureStore();
+const initialState = storage.get('currencyApp');
+const store = configureStore(initialState);
+const initialUiState = store.getState().ui;
+
+store.subscribe(debounce(() => {
+  const currentState = store.getState();
+  // Store only the data in the store with default ui state
+  const onlyData = {
+    ...currentState,
+    ui: initialUiState,
+  };
+  storage.set('currencyApp', onlyData);
+}, 250));
 
 ReactDOM.render(
   <HotEnabler>

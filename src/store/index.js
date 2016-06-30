@@ -6,7 +6,7 @@ import { ratesActions } from '../actions/';
 
 export default function configureStore(initialState) {
   const sagaMiddleware = createSagaMiddleware();
-  const store = createStore(rootReducer, initialState, compose(
+  const store = createStore(rootReducer, initialState || undefined, compose(
     applyMiddleware(sagaMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
