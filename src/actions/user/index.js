@@ -16,3 +16,10 @@ export function deleteRate(rateId) {
     type: actionTypes.DELETE_RATE,
   };
 }
+
+export function addUserRate(rates = []) {
+  return {
+    payload: { rates: rates.filter(rate => Boolean(rate)) },
+    type: actionTypes.ADD_RATE,
+  };
+}

@@ -21,10 +21,3 @@ export function latestRatesFailed(error) {
     type: actionTypes.GET_LATEST_RATES_FAILED,
   };
 }
-
-export function addUserRate(rates = []) {
-  return {
-    payload: { rates },
-    type: actionTypes.ADD_RATE,
-  };
-}

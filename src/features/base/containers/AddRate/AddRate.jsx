@@ -1,7 +1,7 @@
 import styles from './styles.scss';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { ratesActions } from 'actions';
+import { userActions } from 'actions';
 import { hideAddRate } from '../../ui-actions/';
 import { notUserRatesSelector } from 'reducers';
 import { uiAddRateSelector } from '../../ui-reducers/';
@@ -86,7 +86,7 @@ function mapStateToProps(state) {
 }
 
 const boundActions = {
-  addUserRate: ratesActions.addUserRate,
+  addUserRate: userActions.addUserRate,
   hideAddRate,
 };
 
