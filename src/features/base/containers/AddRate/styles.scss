@@ -2,6 +2,7 @@
   align-items: center;
   background: linear-gradient(to bottom, rgba(#fff, .9), rgba(#fff, .99), rgba(#fff, .9));
   display: flex;
+  flex-direction: column;
   height: 100%;
   justify-content: center;
   left: 0;
@@ -18,4 +19,8 @@
   font-size: 1rem;
   padding-bottom: 1rem;
   width: 16rem;
+}
+
+.cancel {
+  margin-top: 4rem;
 }

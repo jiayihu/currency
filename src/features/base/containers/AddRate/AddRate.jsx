@@ -5,6 +5,7 @@ import { ratesActions } from 'actions';
 import { hideAddRate } from '../../ui-actions/';
 import { notUserRatesSelector } from 'reducers';
 import { uiAddRateSelector } from '../../ui-reducers/';
+import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Select from 'react-select';
@@ -18,18 +19,23 @@ class AddRate extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleHide = this.handleHide.bind(this);
   }
 
   handleClick() {
     const selected = this.state.selected || '';
     this.props.addUserRate(selected.split(','));
-    this.props.hideAddRate();
+    this.handleHide();
   }
 
   handleChange(newValue) {
     this.setState({
       selected: newValue,
     });
+  }
+
+  handleHide() {
+    this.props.hideAddRate();
   }
 
   render() {
@@ -55,6 +61,9 @@ class AddRate extends React.Component {
           <FloatingActionButton onClick={this.handleClick} >
             <ContentAdd />
           </FloatingActionButton>
+        </div>
+        <div className={styles.cancel}>
+          <FlatButton label="Cancel" onClick={this.handleHide} secondary />
         </div>
       </div>
     );
