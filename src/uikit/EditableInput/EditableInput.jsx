@@ -7,7 +7,7 @@ export default class EditableInput extends React.Component {
     super(props);
     this.state = {
       isEditing: false,
-      value: this.props.initialValue,
+      value: this.props.format(this.props.initialValue),
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,7 +17,7 @@ export default class EditableInput extends React.Component {
 
   handleChange() {
     this.setState({
-      value: this.input.value,
+      value: this.props.format(this.input.value),
     });
   }
 
@@ -48,10 +48,11 @@ export default class EditableInput extends React.Component {
         <input
           className={styles.input}
           ref={(c) => (this.input = c)}
-          type="text"
+          type={this.props.type}
           value={this.state.value}
           onBlur={this.handleSave}
           onChange={this.handleChange}
+          {...this.props.others}
         />
       );
     }
@@ -66,7 +67,16 @@ export default class EditableInput extends React.Component {
 
 EditableInput.propTypes = {
   className: PropTypes.string,
+  format: PropTypes.func.isRequired,
   initialValue: PropTypes.any.isRequired,
   onSave: PropTypes.func.isRequired,
+  others: PropTypes.object,
   style: PropTypes.object,
+  type: PropTypes.string,
+};
+
+EditableInput.defaultProps = {
+  format(value) { return value; },
+  others: {},
+  type: 'text',
 };

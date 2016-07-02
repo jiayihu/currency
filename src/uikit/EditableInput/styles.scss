@@ -5,14 +5,21 @@
 }
 
 .input {
+  appearance: none;
   background: none;
   border: 0;
   border-bottom: 2px solid rgba(255, 255, 255, 0);
   color: inherit;
   cursor: pointer;
+  margin: 0;
   padding: 0;
   text-align: center;
   width: 100%;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 
   &:focus {
     border-color: $primary-light;

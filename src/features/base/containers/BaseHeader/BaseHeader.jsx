@@ -11,6 +11,10 @@ class BaseHeader extends React.Component {
     this.handleChangeValue = this.handleChangeValue.bind(this);
   }
 
+  format(value) {
+    return Number(value).toFixed(2);
+  }
+
   handleChangeValue(newValue) {
     this.props.updateBaseValue({
       baseId: this.props.id,
@@ -19,6 +23,11 @@ class BaseHeader extends React.Component {
   }
 
   render() {
+    // Not essential input type number properties
+    const otherProperties = {
+      min: '0',
+    };
+
     return (
       <div className={styles.baseHeader}>
         <span>
@@ -27,8 +36,11 @@ class BaseHeader extends React.Component {
           <span className={styles.value}>
             <EditableInput
               className={styles.baseInput}
-              initialValue={this.props.value.toFixed(2)}
+              format={this.format}
+              initialValue={this.props.value}
               onSave={this.handleChangeValue}
+              type="number"
+              others={otherProperties}
             />
           </span>
         </span>

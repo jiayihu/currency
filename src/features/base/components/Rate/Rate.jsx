@@ -24,7 +24,7 @@ export default class Rate extends React.Component {
         </span>
         <span className={styles.currency}>{this.props.currency}</span>
         <span className={styles.icons}>
-          <IconButton tooltip="Delete" onClick={this.handleDelete}>
+          <IconButton onClick={this.handleDelete} tooltip="Delete">
             <DeleteIcon color="#F9DFE2" />
           </IconButton>
           <IconButton tooltip="Drag to order">
