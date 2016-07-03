@@ -7,3 +7,4 @@ export const UPDATE_BASE_VALUE = 'UPDATE_BASE_VALUE';
 
 export const ADD_RATE = 'ADD_RATE';
 export const DELETE_RATE = 'DELETE_RATE';
+export const MOVE_RATE = 'MOVE_RATE';

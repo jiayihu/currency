@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import update from 'react-addons-update';
 import * as actionTypes from '../constants/actionTypes';
 
 const defaultState = {
@@ -39,6 +40,18 @@ function ratesReducer(state = defaultState.rates, action) {
       return state.concat(action.payload.rates);
     case actionTypes.DELETE_RATE:
       return state.filter(rateId => rateId !== action.payload.rateId);
+    case actionTypes.MOVE_RATE: {
+      const { startRateId, endRateId } = action.payload;
+      const startIndex = state.findIndex(rateId => rateId === startRateId);
+      const endIndex = state.findIndex(rateId => rateId === endRateId);
+
+      return update(state, {
+        $splice: [
+          [startIndex, 1],
+          [endIndex, 0, startRateId],
+        ],
+      });
+    }
     default:
       return state;
   }

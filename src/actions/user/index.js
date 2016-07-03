@@ -23,3 +23,13 @@ export function addUserRate(rates = []) {
     type: actionTypes.ADD_RATE,
   };
 }
+
+export function moveRate(startRateId, endRateId) {
+  return {
+    payload: {
+      startRateId,
+      endRateId,
+    },
+    type: actionTypes.MOVE_RATE,
+  };
+}

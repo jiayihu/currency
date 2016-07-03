@@ -5,11 +5,11 @@ import { AddRate, AddRateBtn, BaseHeader } from './containers/';
 import { Rates } from './components/';
 import { userActions } from 'actions';
 
-function Base({ baseId, baseValue, rates, deleteRate }) {
+function Base({ baseId, baseValue, rates, deleteRate, moveRate }) {
   return (
     <div className={styles.base}>
       <BaseHeader id={baseId} name={baseId} value={baseValue} />
-      <Rates baseValue={baseValue} rates={rates} deleteRate={deleteRate} />
+      <Rates baseValue={baseValue} rates={rates} deleteRate={deleteRate} moveRate={moveRate} />
       <AddRateBtn />
       <AddRate />
     </div>
@@ -19,6 +19,7 @@ function Base({ baseId, baseValue, rates, deleteRate }) {
 Base.propTypes = {
   baseId: PropTypes.string.isRequired,
   deleteRate: PropTypes.func.isRequired,
+  moveRate: PropTypes.func.isRequired,
   rates: PropTypes.object.isRequired,
   baseValue: PropTypes.number.isRequired,
 };
